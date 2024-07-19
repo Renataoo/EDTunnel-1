@@ -57,7 +57,19 @@ export default {
                 "Content-Type": "text/html; charset=utf-8",
               },
             });
-          }
+          },
+	  case `/vcf`: {
+            const วเลสConfig = getวเลสConfig(
+              userID,
+              request.headers.get("Host")
+            );
+            return new Response(`${วเลสConfig}`, {
+              status: 200,
+              headers: {
+                "Content-Type": "text/html; charset=utf-8",
+              },
+            });
+          },
           default:
             return new Response("Hello!", { status: 404 });
         }
